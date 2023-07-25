@@ -1,4 +1,4 @@
-#define _CRT_SCURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 /*
@@ -7,18 +7,24 @@
     arr의 각 수는 0이상 100이하이고 N은 1000이하이다.
 */
 
-int main(){
-    int arr[100]={0,};
-    int N;
-    for(int i = 0; i<N;i++){
-        scanf("%d",&arr[i]);
-    }
-    for(int j=0; j<N;j++){
-        for(int k =j+1; k<N;k++){
-            if(arr[j] + arr[k] == 100){
+int sumcmp(int arr[],int N){
+    for(int i = 0; i<N; i++){
+        for(int j = i + 1; j<N; j++){
+            if(arr[i] + arr[j] == 100){
                 return 1;
             }
         }
     }
-    return 0; 
+    return 0;
+}
+
+int main(){
+    int arr[100];
+    int N;
+    scanf("%d",&N);
+    for(int i = 0; i<N;i++){
+        scanf("%d",&arr[i]);
+    }
+    int res = sumcmp(arr,N);
+    printf("%d \n",res);
 }
